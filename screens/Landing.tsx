@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Calculator, Activity, ShieldAlert, Sparkles } from 'lucide-react';
+import { ArrowRight, Calculator, Activity, ShieldAlert, Sparkles, Database } from 'lucide-react';
 
 interface LandingProps {
   onStart: () => void;
@@ -8,58 +8,63 @@ interface LandingProps {
 
 const Landing: React.FC<LandingProps> = ({ onStart }) => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden relative">
-      <div className="absolute top-[-10%] left-[-10%] w-[30%] h-[30%] bg-blue-100/30 rounded-full blur-[80px] animate-pulse"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-indigo-100/30 rounded-full blur-[80px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <div className="min-h-screen flex flex-col items-center justify-center text-center p-8 bg-white relative overflow-hidden font-sans">
+      {/* Corporate Background Accents */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[120px] opacity-60 translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-[100px] opacity-40 -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
 
-      <div className="relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-        <div className="relative bg-blue-600 p-6 rounded-2xl mb-8 shadow-xl ring-4 ring-blue-50 animate-bounce" style={{ animationDuration: '3s' }}>
-          <Calculator className="text-white" size={48} />
+      <div className="relative z-10 max-w-4xl mx-auto">
+        {/* Icon / Brand Mark */}
+        <div className="mb-10 flex justify-center">
+            <div className="w-20 h-20 bg-blue-600 rounded-[20px] shadow-2xl shadow-blue-200 flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <Calculator className="text-white w-10 h-10" strokeWidth={1.5} />
+            </div>
         </div>
-      </div>
 
-      <div className="relative z-10">
-        <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600">Cost of Waiting</span>
-          <span className="block text-blue-600 mt-2 relative">
-            Simulator
-            <Sparkles className="absolute -top-4 -right-8 text-blue-400 animate-pulse" size={32} />
-          </span>
+        {/* Main Headline */}
+        <h1 className="text-5xl md:text-7xl font-bold text-blue-600 mb-6 tracking-tight leading-[1.1]">
+          Cost of Waiting <br/>
+          <span className="font-light text-blue-900 block mt-2">Simulator</span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-gray-500 max-w-2xl mb-12 font-medium leading-relaxed">
-          Visualizing the <span className="text-blue-600 font-bold italic">invisible costs</span> of clinical delay and the impact of <span className="text-indigo-600 font-bold">early metabolic interception.</span>
+        {/* Subtitle */}
+        <p className="text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto mb-14 font-normal leading-relaxed">
+          Visualizing the <span className="text-blue-600 font-bold">invisible costs</span> of clinical delay and the economic impact of <span className="text-blue-800 font-semibold border-b-2 border-blue-200">early metabolic interception</span>.
         </p>
         
-        <div className="flex flex-col items-center gap-6">
+        {/* CTA Section */}
+        <div className="flex flex-col items-center gap-10">
           <button
             onClick={onStart}
-            className="group relative flex items-center gap-4 bg-gray-900 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 hover:scale-105 active:scale-95"
+            className="group relative flex items-center gap-4 bg-blue-600 text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-blue-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 ring-4 ring-blue-50"
           >
-            Enter Index Patient
-            <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+            <span>Enter Index Patient</span>
+            <div className="bg-white/20 rounded-full p-1.5 group-hover:translate-x-1 transition-transform">
+                <ArrowRight size={18} />
+            </div>
           </button>
 
-          <div className="flex gap-4 mt-2">
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-bold bg-white px-3 py-1.5 rounded-full border border-slate-100 shadow-sm">
-              <Activity size={14} className="text-green-500" />
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex items-center gap-2 text-[11px] font-bold text-blue-800 bg-blue-50 px-4 py-2 rounded-full uppercase tracking-wider">
+              <Activity size={14} className="text-blue-600" />
               <span>Real-time Modeling</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-bold bg-white px-3 py-1.5 rounded-full border border-slate-100 shadow-sm">
-              <ShieldAlert size={14} className="text-amber-500" />
+            <div className="flex items-center gap-2 text-[11px] font-bold text-blue-800 bg-blue-50 px-4 py-2 rounded-full uppercase tracking-wider">
+              <ShieldAlert size={14} className="text-blue-600" />
               <span>Evidence Library</span>
+            </div>
+             <div className="flex items-center gap-2 text-[11px] font-bold text-blue-800 bg-blue-50 px-4 py-2 rounded-full uppercase tracking-wider">
+              <Database size={14} className="text-blue-600" />
+              <span>Clinical Data</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-20 border-t border-slate-100 pt-8 w-full max-w-4xl text-xs font-bold text-gray-400 relative z-10">
-        <div className="flex flex-wrap justify-center gap-12 uppercase tracking-widest opacity-60">
-          <p>Educational Framework</p>
-          <p>Non-Promotional</p>
-          <p>Peer-Reviewed</p>
-        </div>
+      {/* Footer Disclaimer */}
+      <div className="absolute bottom-6 w-full text-center px-4">
+         <p className="text-[10px] font-bold text-slate-300 uppercase tracking-[0.2em]">Educational Framework • Non-Promotional • Peer-Reviewed • Internal Use</p>
       </div>
     </div>
   );

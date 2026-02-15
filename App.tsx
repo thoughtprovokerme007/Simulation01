@@ -37,10 +37,12 @@ const App: React.FC = () => {
 
   if (showPatient) {
     return (
-      <div className="min-h-screen pb-20 bg-slate-50">
-        <header className="bg-white border-b px-6 py-4 flex items-center gap-3 sticky top-0 z-50 shadow-sm">
-          <Stethoscope className="text-blue-600" size={24} />
-          <h1 className="text-xl font-bold tracking-tight uppercase">CKLM Simulator</h1>
+      <div className="min-h-screen pb-20 bg-slate-50 font-sans">
+        <header className="bg-white border-b px-8 py-5 flex items-center gap-4 sticky top-0 z-50 shadow-sm">
+          <div className="bg-blue-600 p-2 rounded-lg text-white shadow-md">
+            <Stethoscope size={24} />
+          </div>
+          <h1 className="text-xl font-bold tracking-tight text-blue-900 uppercase">CKLM Simulator <span className="text-slate-400 text-sm normal-case ml-2 font-medium">| Patient Profile</span></h1>
         </header>
         <div className="py-12">
           <PatientProfile 
@@ -58,27 +60,27 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       {/* Top Navigation */}
-      <header className="bg-white border-b sticky top-0 z-40 shadow-sm">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3 cursor-pointer group" onClick={() => setShowLanding(true)}>
-              <div className="p-1.5 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
-                <Stethoscope className="text-blue-600" size={20} />
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center gap-4 cursor-pointer group" onClick={() => setShowLanding(true)}>
+              <div className="p-2 bg-blue-600 rounded-lg shadow-lg group-hover:bg-blue-800 transition-colors">
+                <Stethoscope className="text-white" size={22} />
               </div>
-              <h1 className="text-lg font-bold tracking-tight hidden md:block uppercase">CKLM Simulator</h1>
+              <h1 className="text-lg font-bold tracking-tight hidden md:block text-blue-900 uppercase">CKLM Simulator</h1>
             </div>
             
-            <nav className="flex items-center h-full gap-1">
+            <nav className="flex items-center h-full gap-2">
               {tabs.map(tab => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-4 h-10 rounded-xl text-sm font-bold transition-all flex items-center ${
+                  className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all flex items-center ${
                     activeTab === tab 
-                    ? 'text-blue-600 bg-blue-50 ring-1 ring-blue-100' 
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'text-white bg-blue-600 shadow-md' 
+                    : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'
                   }`}
                 >
                   {tab}
@@ -99,8 +101,8 @@ const App: React.FC = () => {
       </main>
 
       {/* Footer / Disclaimers */}
-      <footer className="bg-white border-t py-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8 text-xs text-gray-500">
+      <footer className="bg-white border-t border-slate-200 py-10 px-6 mt-auto">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-8 text-xs text-slate-500">
           <div className="space-y-3 max-w-xl">
             <div className="flex items-center gap-2 text-amber-600 font-bold mb-1 tracking-wider uppercase">
               <AlertTriangle size={14} />
@@ -109,9 +111,9 @@ const App: React.FC = () => {
             <p className="leading-relaxed">This Cost of Waiting Simulator is an educational resource intended for healthcare professionals only. Not for promotional purposes or direct patient consultation.</p>
             <p className="leading-relaxed">Projections are derived from peer-reviewed literature cited herein. Individual patient results may vary. No direct drug price comparison is intended.</p>
           </div>
-          <div className="space-y-1 md:text-right text-gray-400">
-            <p>© 2024 CKLM Medical Intelligence. v1.1.0</p>
-            <p>Data Update: Q3 2024</p>
+          <div className="space-y-1 md:text-right text-slate-400">
+            <p className="font-bold text-blue-900">© 2024 CKLM Medical Intelligence</p>
+            <p>v1.1.0 • Data Update: Q3 2024</p>
           </div>
         </div>
       </footer>
